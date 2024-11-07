@@ -38,9 +38,9 @@ if __name__ == "__main__":
         
         print("\nSelect folder where you want to change file names.")
         folder_path = filedialog.askdirectory()
-        print("\nFolder: {}".format(folder_path))
 
         if len(folder_path) > 0: 
+            print("\nFolder: {}".format(folder_path))
             content = input("\nWhat text would you like all file names in this folder to include? ")
             print("\nContent: {}".format(content))
 
