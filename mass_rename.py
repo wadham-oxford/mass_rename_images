@@ -37,6 +37,7 @@ if __name__ == "__main__":
         print("\n--Mass Re-Naming Tool--")
         
         print("\nSelect folder where you want to change file names.")
+        sleep(1)
         folder_path = filedialog.askdirectory()
 
         if len(folder_path) > 0: 
