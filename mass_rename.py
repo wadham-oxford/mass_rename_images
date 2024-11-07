@@ -20,13 +20,15 @@ def change_names(folder_path, content):
     file_list = os.listdir(folder_path)
     x = 1
     for file in file_list:
-        number = get_number(x)
-        extension = get_extension(file)
-        new_file_name = number + content + extension
-        new_path = os.path.join(folder_path, new_file_name)
         original = os.path.join(folder_path, file)
-        os.rename(original, new_path)
-        x += 1
+        if not os.path.isdir(original):
+            number = get_number(x)
+            extension = get_extension(file)
+            new_file_name = number + content + extension
+            new_path = os.path.join(folder_path, new_file_name)
+        
+            os.rename(original, new_path)
+            x += 1
 
 
 if __name__ == "__main__":
