@@ -1,5 +1,6 @@
 import os
 from tkinter import filedialog
+from time import sleep
 
 
 def get_extension(string):
@@ -32,14 +33,23 @@ def change_names(folder_path, content):
 
 
 if __name__ == "__main__":
-    print("\nSelect folder where you want to change file names.")
-    folder_path = filedialog.askdirectory()
-    print("\nFolder: {}".format(folder_path))
+    while True:
+        print("\n--Mass Re-Naming Tool--")
+        
+        print("\nSelect folder where you want to change file names.")
+        folder_path = filedialog.askdirectory()
+        print("\nFolder: {}".format(folder_path))
 
-    content = input("\nWhat text would you like all file names in this folder to include? ")
-    print("\nContent: {}".format(content))
+        if len(folder_path) > 0: 
+            content = input("\nWhat text would you like all file names in this folder to include? ")
+            print("\nContent: {}".format(content))
 
-    change_names(folder_path, content)
-    print("\nAll file names changed.")
+            change_names(folder_path, content)
+            print("\nAll file names changed.")
 
-    os.startfile(folder_path)
+            os.startfile(folder_path)
+        
+        else:
+            print("\nProcess terminated.")
+            sleep(1)
+            break
