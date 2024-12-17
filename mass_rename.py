@@ -43,9 +43,10 @@ if __name__ == "__main__":
         if len(folder_path) > 0: 
             print("\nFolder: {}".format(folder_path))
             content = input("\nWhat text would you like all file names in this folder to include? ")
-            print("\nContent: {}".format(content))
+            content_formatted = content.replace(" ", "_")
+            print("\nContent: {}".format(content_formatted))
 
-            change_names(folder_path, content)
+            change_names(folder_path, content_formatted)
             print("\nAll file names changed.")
 
             os.startfile(folder_path)
