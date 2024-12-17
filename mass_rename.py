@@ -49,6 +49,8 @@ if __name__ == "__main__":
             print("\nAll file names changed.")
 
             os.startfile(folder_path)
+            print("")
+            confirm = input("Press ENTER to work on another folder. ")
         
         else:
             print("\nProcess terminated.")
