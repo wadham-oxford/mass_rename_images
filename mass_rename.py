@@ -1,11 +1,9 @@
 import os
 from tkinter import filedialog
 from time import sleep
+from extensions import IMAGE_EXTENSIONS, VIDEO_EXTENSIONS
 
 MAX_NUM_FILES = 999
-IMAGE_EXTENSIONS = (".jpg", ".jpeg", ".png", ".gif", ".arw", ".svg", ".dng", 
-                    ".tiff", ".webp")
-VIDEO_EXTENSIONS = (".mp4", ".mov", ".avi", ".avchd", ".mkv", ".flv")
 
 PermissionErrorFlag = False
 OSErrorFlag = False
@@ -56,15 +54,20 @@ def change_names(folder_path, file_list, content):
                         periods.append(char) 
                 if len(periods) < 2:
 
-                    # construct new name        
-                    number = get_number(x)
+                    # check if file is in an image or video file      
                     extension = get_extension(file)
-                    new_file_name = number + content + extension
-                    new_path = os.path.join(folder_path, new_file_name)
+                    extension_formatted = extension.lower()                    
+                    if extension_formatted in IMAGE_EXTENSIONS or \
+                    extension_formatted in VIDEO_EXTENSIONS:
+                        
+                        # construct new name
+                        number = get_number(x)
+                        new_file_name = number + content + extension
+                        new_path = os.path.join(folder_path, new_file_name)
                     
-                    # apply new name
-                    os.rename(original, new_path)
-                    x += 1
+                        # apply new name
+                        os.rename(original, new_path)
+                        x += 1
 
         except FileExistsError:
             pass
