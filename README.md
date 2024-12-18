@@ -4,10 +4,10 @@ Allows you to quickly rename all files in a folder. The intended use-case was fo
 
 All the files are assigned numbers plus your chosen text. For example, if your chosen text was "Our Wedding", the files would be renamed:
 
-- 01_our_wedding.jpg
-- 02_our_wedding.jpg
-- 03_our_wedding.jpg
-- ...
+- `01_our_wedding.jpg`
+- `02_our_wedding.jpg`
+- `03_our_wedding.jpg`
+- ... etc
 
 The script ignores sub-folders and any files within those sub-folders. The script also ignores any files that might have two "." in their file names or file extensions. 
 
