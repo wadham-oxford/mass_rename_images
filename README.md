@@ -1,6 +1,8 @@
 # Purpose
 
-Allows you to quickly rename all files in a folder. The intended use-case was for renaming all photos in a folder since default photo names are usually not very descriptive. 
+Allows you to rename all and only the image files (and video files) in a folder at once.
+
+The file extensions recognised as belonging to image or video files are found in `extensions.py`.
 
 All the files are assigned numbers plus your chosen text. For example, if your chosen text was "Our Wedding", the files would be renamed:
 
