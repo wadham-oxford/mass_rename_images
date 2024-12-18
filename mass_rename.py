@@ -3,6 +3,10 @@ from tkinter import filedialog
 from time import sleep
 
 MAX_NUM_FILES = 999
+IMAGE_EXTENSIONS = (".jpg", ".jpeg", ".png", ".gif", ".arw", ".svg", ".dng", 
+                    ".tiff", ".webp")
+VIDEO_EXTENSIONS = (".mp4", ".mov", ".avi", ".avchd", ".mkv", ".flv")
+
 PermissionErrorFlag = False
 OSErrorFlag = False
 
