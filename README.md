@@ -14,3 +14,7 @@ The script ignores sub-folders and any files within those sub-folders. The scrip
 # Caveat
 
 Use this script at your own risk. Back-up important files. We take no responsibility for any lost or corrupted files!
+
+# Download 
+
+Get the [latest release]https://github.com/wadham-oxford/mass_rename/releases
