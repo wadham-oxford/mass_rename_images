@@ -13,4 +13,4 @@ The script ignores sub-folders and any files within those sub-folders. The scrip
 
 # Caveat
 
-Use this script at your own risk. Back-up important files. I take no responsibility for any lost or corrupted files!
+Use this script at your own risk. Back-up important files. We take no responsibility for any lost or corrupted files!
