@@ -1,4 +1,5 @@
-# Purpose
+# Mass Rename Images
+## Purpose
 
 Allows you to rename all and only the image files (and video files) in a folder at once.
 
@@ -13,10 +14,10 @@ All the files are assigned numbers plus your chosen text. For example, if your c
 
 The script ignores sub-folders and any files within those sub-folders. The script also ignores any files that might have two "." in their file names or file extensions. 
 
-# Caveat
+## Caveat
 
-Use this script at your own risk. Back-up important files. We take no responsibility for any lost or corrupted files!
+There us no built-in way to undo actions performed with this script. Use it at your own risk. Back-up important files. We take no responsibility for any lost or corrupted files!
 
-# Download 
+## Download 
 
 Get the latest release: https://github.com/wadham-oxford/mass_rename/releases
