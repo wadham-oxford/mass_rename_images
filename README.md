@@ -17,4 +17,4 @@ Use this script at your own risk. Back-up important files. We take no responsibi
 
 # Download 
 
-Get the [latest release]https://github.com/wadham-oxford/mass_rename/releases
+Get the latest release: https://github.com/wadham-oxford/mass_rename/releases
