@@ -83,7 +83,11 @@ def change_names(folder_path, file_list, content):
 
 if __name__ == "__main__":
     while True:
-        print("\n--Mass Re-Naming Tool--")
+        divider = "-----------------------------------------------------------"
+        print("")
+        print(divider)
+        print(divider)
+        print("MASS RENAMING TOOL")
         
         print("\nSelect folder where you want to change file names.")
         sleep(1)
