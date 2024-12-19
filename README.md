@@ -12,7 +12,7 @@ All the files are assigned numbers plus your chosen text. For example, if your c
 - `03_our_wedding.jpg`
 - ... etc
 
-The script ignores sub-folders and any files within those sub-folders. The script also ignores any files that might have two "." in their file names or file extensions. 
+The script ignores sub-folders and any files within those sub-folders. The script also ignores any files that might have "." more than once in their file names or extensions. 
 
 ## Caveat
 
