@@ -10,11 +10,11 @@ PermissionErrorFlag = False
 OSErrorFlag = False
 
 
-def get_extension(string):
+def get_extension(file_name):
     ''' Returns file extension from original file name.
         Ensures that the file extension survives name change.'''
     dot = "."
-    sub_strings = string.split(dot)
+    sub_strings = file_name.split(dot)
     extension = dot + sub_strings[-1]
     return extension
 
