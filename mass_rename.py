@@ -3,10 +3,12 @@ from tkinter import filedialog
 from time import sleep
 from extensions import IMAGE_EXTENSIONS, VIDEO_EXTENSIONS
 
+
 MAX_NUM_FILES = 999
 
 PermissionErrorFlag = False
 OSErrorFlag = False
+
 
 def get_extension(string):
     ''' Returns file extension from original file name.
@@ -81,7 +83,10 @@ def change_names(folder_path, file_list, content):
             OSErrorFlag = True
 
 
-if __name__ == "__main__":
+def get_input():
+    ''' Gets user to select folder where name changes will happen,
+        and the string to insert into every new file name.'''
+    
     while True:
         divider = "-----------------------------------------------------------"
         print("")
@@ -140,3 +145,7 @@ if __name__ == "__main__":
             print("\nNo valid folder selected.")
             sleep(1)
             break
+
+
+if __name__ == "__main__":
+    get_input()
