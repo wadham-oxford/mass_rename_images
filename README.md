@@ -1,7 +1,7 @@
 # Mass Rename Images
 ## Purpose
 
-Allows you to rename all and only the image files (and video files) in a folder at once.
+Allows you to rename all and only the image and video files in a folder at once.
 
 The file extensions recognised as belonging to image or video files are found in `extensions.py`.
 
