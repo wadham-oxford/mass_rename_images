@@ -53,13 +53,9 @@ def change_names(folder_path, file_list, powers, content):
             if not os.path.isdir(original):
 
                 # do not change names of any files with more than one "."
-                periods = []
-                for char in file:
-                    if char == ".":
-                        periods.append(char) 
-                if len(periods) < 2:
+                if file.count(".") < 2:
 
-                    # check if file is in an image or video file      
+                    # check if file is an image or video file      
                     extension = get_extension(file).lower()                
                     if extension in IMAGE_EXTENSIONS or \
                     extension in VIDEO_EXTENSIONS:
@@ -106,9 +102,8 @@ def get_input():
         if len(folder_path) > 0: 
             print("\nFolder: {}".format(folder_path))
 
-            # check if number of files is within accepted limit
+            # check folder has files inside
             file_list = os.listdir(folder_path)
-            global num_files
             num_files = len(file_list)
             if num_files > 0:
                 powers = count_powers_of_ten(num_files)
@@ -137,7 +132,7 @@ def get_input():
                 print("")
 
                 # prompt to begin loop again
-                confirm = input("Press ENTER to work on another folder. ")
+                input("Press ENTER to work on another folder. ")
             
             else:
                 print("\nFolder is either empty or contains too many files.")
