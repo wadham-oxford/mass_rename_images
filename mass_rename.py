@@ -23,18 +23,19 @@ def get_number(x):
     ''' Returns the correctly formatted number to insert into
         beginning of new file name.'''
     char = (str(x))
+
     if num_files < 100:
+        num = "0" if x < 10 else ""
+
+    else:
         if x < 10:
-            return "0{}_".format(char)
-        else:
-            return "{}_".format(char)
-    elif num_files >= 100:
-        if x < 10:
-            return "00{}_".format(char)
+            num = "00"
         elif x < 100:
-            return "0{}_".format(char)
+            num = "0"
         else:
-            return "{}_".format(char)
+            num = ""
+    
+    return f"{num}{char}_"
     
 
 def change_names(folder_path, file_list, content):
