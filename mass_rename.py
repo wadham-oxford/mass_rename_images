@@ -3,9 +3,6 @@ from tkinter import filedialog
 from time import sleep
 from extensions import IMAGE_EXTENSIONS, VIDEO_EXTENSIONS
 
-
-MAX_NUM_FILES = 999
-
 PermissionErrorFlag = False
 OSErrorFlag = False
 
@@ -19,26 +16,31 @@ def get_extension(file_name):
     return extension
 
 
-def get_number(x):
+def count_powers_of_ten(num):
+    power = 1
+    while num > 10 ** power:
+        power += 1
+    
+    return power - 1
+
+
+def get_number(x, powers):
     ''' Returns the correctly formatted number to insert into
         beginning of new file name.'''
+
     char = (str(x))
-
-    if num_files < 100:
-        num = "0" if x < 10 else ""
-
-    else:
-        if x < 10:
-            num = "00"
-        elif x < 100:
-            num = "0"
-        else:
-            num = ""
+    powers_reduced = powers
+    while x < 10 ** powers_reduced:
+        powers_reduced -= 1
     
-    return f"{num}{char}_"
+    num_zeros = powers - powers_reduced
+    zeros = "0" * num_zeros
+    result = f"{zeros}{char}_"
+    
+    return result
     
 
-def change_names(folder_path, file_list, content):
+def change_names(folder_path, file_list, powers, content):
     ''' Tries to change name of every file in provided file list to
         include provided content.'''
     
@@ -58,13 +60,12 @@ def change_names(folder_path, file_list, content):
                 if len(periods) < 2:
 
                     # check if file is in an image or video file      
-                    extension = get_extension(file)
-                    extension_formatted = extension.lower()                    
-                    if extension_formatted in IMAGE_EXTENSIONS or \
-                    extension_formatted in VIDEO_EXTENSIONS:
+                    extension = get_extension(file).lower()                
+                    if extension in IMAGE_EXTENSIONS or \
+                    extension in VIDEO_EXTENSIONS:
                         
                         # construct new name
-                        number = get_number(x)
+                        number = get_number(x, powers)
                         new_file_name = number + content + extension
                         new_path = os.path.join(folder_path, new_file_name)
                     
@@ -109,17 +110,18 @@ def get_input():
             file_list = os.listdir(folder_path)
             global num_files
             num_files = len(file_list)
-            if num_files > 0 and num_files <= MAX_NUM_FILES:
-
+            if num_files > 0:
+                powers = count_powers_of_ten(num_files)
+                
                 # get new name content from user
                 content = input("\nWhat text would you like " + \
                     "all file names in this folder to include?\n\n")
                 
                 content_formatted = content.replace(" ", "_")
-                print("\nContent: {}".format(content_formatted))
+                print(f"\nContent: {content_formatted}")
 
                 # apply name change
-                change_names(folder_path, file_list, content_formatted)
+                change_names(folder_path, file_list, powers, content_formatted)
                 
                 # check if any errors arose
                 if PermissionErrorFlag or OSErrorFlag: 
