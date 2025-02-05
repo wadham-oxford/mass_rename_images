@@ -136,7 +136,7 @@ def get_input():
                 input("Press ENTER to work on another folder. ")
             
             else:
-                print("\nFolder is either empty or contains too many files.")
+                print("\nFolder seems to be empty.")
                 sleep(1)
                 break
         
