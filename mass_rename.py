@@ -82,19 +82,23 @@ def change_names(folder_path, file_list, powers, content):
             OSErrorFlag = True
 
 
+def intro_text():
+    divider = "-----------------------------------------------------------"
+    print("")
+    print(divider)
+    print(divider)
+    print("MASS RENAMING TOOL")
+    
+    print("\nSelect folder where you want to change file names.")
+    sleep(1)
+
+
 def get_input():
     ''' Gets user to select folder where name changes will happen,
         and the string to insert into every new file name.'''
     
     while True:
-        divider = "-----------------------------------------------------------"
-        print("")
-        print(divider)
-        print(divider)
-        print("MASS RENAMING TOOL")
-        
-        print("\nSelect folder where you want to change file names.")
-        sleep(1)
+        intro_text()
 
         # get folder to work with
         folder_path = filedialog.askdirectory()
