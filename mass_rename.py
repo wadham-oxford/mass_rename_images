@@ -1,4 +1,5 @@
-import os
+from os import rename, listdir, startfile
+from os.path import join, isdir
 from tkinter import filedialog
 from time import sleep
 from extensions import IMAGE_EXTENSIONS, VIDEO_EXTENSIONS
@@ -47,10 +48,10 @@ def change_names(folder_path, file_list, powers, content):
     x = 1
     for file in file_list:
         try:
-            original = os.path.join(folder_path, file)
+            original = join(folder_path, file)
 
             # do not change names of any subdirectories
-            if not os.path.isdir(original):
+            if not isdir(original):
 
                 # do not change names of any files with more than one "."
                 if file.count(".") < 2:
@@ -63,10 +64,10 @@ def change_names(folder_path, file_list, powers, content):
                         # construct new name
                         number = get_number(x, powers)
                         new_file_name = number + content + extension
-                        new_path = os.path.join(folder_path, new_file_name)
+                        new_path = join(folder_path, new_file_name)
                     
                         # apply new name
-                        os.rename(original, new_path)
+                        rename(original, new_path)
                         x += 1
 
         except FileExistsError:
@@ -103,7 +104,7 @@ def get_input():
             print("\nFolder: {}".format(folder_path))
 
             # check folder has files inside
-            file_list = os.listdir(folder_path)
+            file_list = listdir(folder_path)
             num_files = len(file_list)
             if num_files > 0:
                 powers = count_powers_of_ten(num_files)
@@ -128,7 +129,7 @@ def get_input():
                     print("\nAll file names changed.")
 
                 # open folder where name changes have occurred
-                os.startfile(folder_path)
+                startfile(folder_path)
                 print("")
 
                 # prompt to begin loop again
