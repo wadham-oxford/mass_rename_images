@@ -89,7 +89,8 @@ def intro_text():
     print(divider)
     print("MASS RENAMING TOOL")
     
-    print("\nSelect folder where you want to change file names.")
+    print("\nA dialog box will open shortly.")
+    print("\nUse it to select the folder where you want to change file names.")
     sleep(1)
 
 
