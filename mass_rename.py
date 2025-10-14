@@ -53,22 +53,19 @@ def change_names(folder_path, file_list, powers, content):
             # do not change names of any subdirectories
             if not isdir(original):
 
-                # do not change names of any files with more than one "."
-                if file.count(".") < 2:
-
-                    # check if file is an image or video file      
-                    extension = get_extension(file).lower()                
-                    if extension in IMAGE_EXTENSIONS or \
-                    extension in VIDEO_EXTENSIONS:
-                        
-                        # construct new name
-                        number = get_number(x, powers)
-                        new_file_name = number + content + extension
-                        new_path = join(folder_path, new_file_name)
+                # check if file is an image or video file      
+                extension = get_extension(file).lower()                
+                if extension in IMAGE_EXTENSIONS or \
+                extension in VIDEO_EXTENSIONS:
                     
-                        # apply new name
-                        rename(original, new_path)
-                        x += 1
+                    # construct new name
+                    number = get_number(x, powers)
+                    new_file_name = number + content + extension
+                    new_path = join(folder_path, new_file_name)
+                
+                    # apply new name
+                    rename(original, new_path)
+                    x += 1
 
         except FileExistsError:
             pass
