@@ -104,46 +104,52 @@ def get_input():
 
         # get folder to work with
         filename = filedialog.askopenfilename()
-        folder_path = str(Path(filename).parent)
+        if filename:
+            folder_path = str(Path(filename).parent)
 
-        # check if folder path is not empty
-        if len(folder_path) > 0: 
-            print("\nFolder: {}".format(folder_path))
+            # check if folder path is not empty
+            if len(folder_path) > 0: 
+                print("\nFolder: {}".format(folder_path))
 
-            # check folder has files inside
-            file_list = listdir(folder_path)
-            num_files = len(file_list)
-            if num_files > 0:
-                powers = count_powers_of_ten(num_files)
-                
-                # get new name content from user
-                content = input("\nWhat text would you like " + \
-                    "all file names in this folder to include?\n\n")
-                
-                content_formatted = content.replace(" ", "_")
-                print(f"\nContent: {content_formatted}")
+                # check folder has files inside
+                file_list = listdir(folder_path)
+                num_files = len(file_list)
+                if num_files > 0:
+                    powers = count_powers_of_ten(num_files)
+                    
+                    # get new name content from user
+                    content = input("\nWhat text would you like " + \
+                        "all file names in this folder to include?\n\n")
+                    
+                    content_formatted = content.replace(" ", "_")
+                    print(f"\nContent: {content_formatted}")
 
-                # apply name change
-                change_names(folder_path, file_list, powers, content_formatted)
+                    # apply name change
+                    change_names(folder_path, file_list, powers, content_formatted)
+                    
+                    # check if any errors arose
+                    if PermissionErrorFlag or OSErrorFlag: 
+                        print("\nERROR: Some names could not be changed.")
+                        print("\nAvoid using special characters and ensure " + \
+                            "the folder or files are not open in another " + \
+                            "programme.")
+                    else:
+                        print("\nAll file names changed.")
+
+                    # open folder where name changes have occurred
+                    startfile(folder_path)
+                    print("")
+
+                    # prompt to begin loop again
+                    input("Press ENTER to work on another folder. ")
                 
-                # check if any errors arose
-                if PermissionErrorFlag or OSErrorFlag: 
-                    print("\nERROR: Some names could not be changed.")
-                    print("\nAvoid using special characters and ensure " + \
-                        "the folder or files are not open in another " + \
-                        "programme.")
                 else:
-                    print("\nAll file names changed.")
-
-                # open folder where name changes have occurred
-                startfile(folder_path)
-                print("")
-
-                # prompt to begin loop again
-                input("Press ENTER to work on another folder. ")
+                    print("\nFolder seems to be empty.")
+                    sleep(1)
+                    break
             
             else:
-                print("\nFolder seems to be empty.")
+                print("\nNo valid folder selected.")
                 sleep(1)
                 break
         

@@ -36,7 +36,7 @@ After running the script, a command line window will open with a brief message:
 
 After a short pause, a dialog box will open asking you to select a file. 
 
-IMAGE
+![dialog box screenshot](screenshots/dialog_box.png)
 
 Browse to the folder where you want file names to be changed and select any file in that folder. It doesn't matter which one. The file is just being used to point the script to the folder you want to work with.
 
@@ -44,14 +44,12 @@ Once you have selected a file, the dialog box will close.
 
 Return to the command line window, where you will be asked to type in the new name you want to give to your image/video files.
 
-IMAGE
+![command line screenshot](screenshots/where_to_type.png)
 
 Hit enter when you have typed the name. There may be a few moments pause while the script works to update the file names.
 
 Once that work is complete, the script will open the folder for you in your file browser so you can see the changes. 
 
 To work on another folder, return to the command line window and hit enter.
-
-IMAGE
 
 To terminate the script, close the command line window or hit CTRL + C. 
