@@ -40,44 +40,47 @@ def get_number(x, powers):
     result = f"{zeros}{char}_"
     
     return result
-    
+   
 
 def change_names(folder_path, file_list, powers, content):
     ''' Tries to change name of every file in provided file list to
         include provided content.'''
     
-    x = 1
-    for file in file_list:
-        try:
-            original = join(folder_path, file)
-
-            # do not change names of any subdirectories
-            if not isdir(original):
-
-                # check if file is an image or video file      
-                extension = get_extension(file).lower()                
-                if extension in IMAGE_EXTENSIONS or \
-                extension in VIDEO_EXTENSIONS:
+    valid_extensions = IMAGE_EXTENSIONS | VIDEO_EXTENSIONS
+    file_list = [file for file in file_list if not isdir(join(folder_path, file))   
+                 and get_extension(file).lower() in valid_extensions]
+    target_extensions = {get_extension(file).lower() for file in file_list}
+    
+    files_by_extensions = {extension: 
+                           [file for file in file_list if get_extension(file).lower() == extension] 
+                           for extension in target_extensions}
+    
+    for extension in files_by_extensions.keys():
+        x = 1
+        for file in files_by_extensions[extension]:
+            try:
+                original_path = join(folder_path, file)               
                     
-                    # construct new name
-                    number = get_number(x, powers)
-                    new_file_name = number + content + extension
-                    new_path = join(folder_path, new_file_name)
-                
-                    # apply new name
-                    rename(original, new_path)
-                    x += 1
+                # construct new name
+                number = get_number(x, powers)
+                new_file_name = number + content + extension
+                new_path = join(folder_path, new_file_name)
+            
+                # apply new name
+                rename(original_path, new_path)
+                x += 1
 
-        except FileExistsError:
-            pass
+            except FileExistsError:
+                pass
 
-        except PermissionError:
-            global PermissionErrorFlag
-            PermissionErrorFlag = True
+            except PermissionError:
+                global PermissionErrorFlag
+                PermissionErrorFlag = True
 
-        except OSError:
-            global OSErrorFlag
-            OSErrorFlag = True
+            except OSError:
+                global OSErrorFlag
+                OSErrorFlag = True
+
 
 
 def intro_text():
