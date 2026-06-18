@@ -1,5 +1,6 @@
 from os import rename, listdir, startfile
 from os.path import join, isdir
+from pathlib import Path
 from tkinter import filedialog
 from time import sleep
 from extensions import IMAGE_EXTENSIONS, VIDEO_EXTENSIONS
@@ -87,7 +88,7 @@ def intro_text():
     print("MASS RENAMING TOOL")
     
     print("\nA dialog box will open shortly.")
-    print("\nUse it to select the folder where you want to change file names.")
+    print("\nUse it to select a file. I'll take the folder that file is in and change the names of the images in it.")
     sleep(1)
 
 
@@ -99,7 +100,8 @@ def get_input():
         intro_text()
 
         # get folder to work with
-        folder_path = filedialog.askdirectory()
+        filename = filedialog.askopenfilename()
+        folder_path = str(Path(filename).parent)
 
         # check if folder path is not empty
         if len(folder_path) > 0: 
