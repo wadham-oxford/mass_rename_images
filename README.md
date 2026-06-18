@@ -14,6 +14,7 @@ For example, if your chosen text was "Our Wedding", the files would be renamed:
 - `03_our_wedding.jpg`
 - ... etc
 
+
 - `01_our_wedding.png`
 - ... etc
 
@@ -31,7 +32,7 @@ Get the latest release: https://github.com/wadham-oxford/mass_rename/releases
 
 After running the script, a command line window will open with a brief message:
 
-IMAGE
+![command line screenshot](screenshots/upon_opening.png)
 
 After a short pause, a dialog box will open asking you to select a file. 
 
